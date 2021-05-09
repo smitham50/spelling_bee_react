@@ -18,3 +18,7 @@ html, body {
   font-family: 'Baloo Bhai';
   padding: 1%;
 }
+
+input {
+  outline: none;
+}

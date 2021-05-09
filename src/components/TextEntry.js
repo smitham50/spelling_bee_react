@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const TextEntry = () => {
+    const [text, setText] = useState("");
+
     return (
         <div id="text-entry">
-            <div id="text-box"></div>
+            <input id="text-box" onChange={(e) => {setText(e.target.value)}} value={ text } />
         </div>
     );
 }
