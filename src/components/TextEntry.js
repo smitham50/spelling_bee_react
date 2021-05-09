@@ -5,7 +5,7 @@ const TextEntry = () => {
 
     return (
         <div id="text-entry">
-            <input id="text-box" onChange={(e) => {setText(e.target.value)}} value={ text } />
+            <input id="text-box" onChange={ (e) => {setText(e.target.value)} } value={ text } />
         </div>
     );
 }
