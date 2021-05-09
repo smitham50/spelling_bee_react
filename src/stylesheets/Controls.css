@@ -1,0 +1,41 @@
+.btn {
+    font-size: 1.1em;
+    padding-top: 2%;
+    padding-bottom:6%;
+    width: 15%;
+    height: 15%;
+    border-radius: 50px;
+    background-color: #fdbf00;
+    color: #282828;
+    text-align: center;
+}
+
+.btn-click {
+    background-color: #ffd34c;
+}
+
+#buttons {
+    display: flex;
+    justify-content: space-evenly;
+    padding-right: 11rem;
+    margin: 3rem;
+    height: 5%;
+}
+
+#delete-click {
+    background-color: #ffd34c;
+}
+
+#shuffle {
+    background-color: #fdbf00;
+    color: #282828;
+    text-align: center;
+}
+
+#shuffle-click {
+    background-color: #ffd34c;
+}
+
+#submit-click {
+    background-color: #ffd34c;
+}

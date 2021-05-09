@@ -1,0 +1,34 @@
+ul {
+    list-style: none;
+}
+
+#found-words {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#found-words .expand {
+    width: 90%;
+    height: 79vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: start;
+    overflow-x: auto;
+    background-color: #fff;
+    border-radius: 5px;
+    border: solid 1px;
+    z-index: 1;
+}
+
+#found-words li {
+    margin: 3%;
+}
+
+img#expand {
+    visibility: hidden;
+}

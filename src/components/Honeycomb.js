@@ -1,8 +1,10 @@
 import React from 'react';
 
-const Honeycomb = () => {
+const Honeycomb = (props) => {
+    
+
     return (
-        <div>
+        <div className="honeycomb">
             <ul id="grid" className="clear">
                 <li>
                     <div className="hexagon hidden"></div>
@@ -17,7 +19,7 @@ const Honeycomb = () => {
                     <div className="hexagon"></div>
                 </li>
                 <li>
-                    <div className="hexagon"></div>
+                    <div className="hexagon" id="center"></div>
                 </li>
                 <li>
                     <div className="hexagon"></div>
