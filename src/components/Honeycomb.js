@@ -1,16 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import shuffleArray from 'shuffle-array';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import pickLetters from '../utils/pickLetters';
 
 const Honeycomb = (props) => {
-    const [hexVals, setHexVals] = useState([]);
-    const { dictionary } = props;
+    const {
+        dictionary, 
+        gameStart, 
+        setGameStart,
+        hexVals,
+        setHexVals,
+        setGameLetters
+    } = props;
 
     useEffect(() => {
-        setHexVals(shuffleArray(["f", "s", "g", "e", "r", "a", "p"]));
-    }, []);
-
-    console.log(dictionary);
+        if (gameStart) {
+            const gameLetters = pickLetters();
+            setHexVals(gameLetters);
+            setGameLetters(gameLetters);
+            //filter valid words
+            //calculate possible points
+            // setGameStart(false);
+        }
+    }, [gameStart]);
 
     return (
         <div className="honeycomb">
@@ -48,13 +59,29 @@ const Honeycomb = (props) => {
 }
 
 function msp(state) {
-    const {
-        dictionary
-    } = state.dictionary;
+    const { dictionary } = state.dictionary;
+    const { gameStart } = state.game;
+    const { hexVals } = state.letter;
 
     return {
-        dictionary
+        dictionary,
+        gameStart,
+        hexVals
     }
 }
 
-export default connect(msp, null)(Honeycomb);
+function mdp(dispatch) {
+    return {
+        setGameStart: (gameStart) => {
+            dispatch({type: "SET_GAME_START", payload: gameStart});
+        },
+        setHexVals: (letters) => {
+            dispatch({type: "SET_HEX_VALS", payload: letters});
+        },
+        setGameLetters: (letters) => {
+            dispatch({type: "SET_GAME_LETTERS", payload: letters});
+        }
+    }
+}
+
+export default connect(msp, mdp)(Honeycomb);

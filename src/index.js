@@ -7,8 +7,13 @@ import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
 import gameReducer from './reducers/gameReducer';
 import dictionaryReducer from './reducers/dictionaryReducer';
+import letterReducer from './reducers/letterReducer';
 
-const rootReducer = combineReducers({game: gameReducer, dictionary: dictionaryReducer});
+const rootReducer = combineReducers({
+                      game: gameReducer, 
+                      dictionary: dictionaryReducer,
+                      letter: letterReducer
+                    });
 
 const store = createStore(rootReducer);
 

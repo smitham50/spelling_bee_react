@@ -1,3 +1,11 @@
+#buttons {
+    display: flex;
+    justify-content: space-evenly;
+    padding-right: 8rem;
+    margin: 3rem;
+    height: 5%;
+}
+
 .btn {
     font-size: 1.1em;
     padding-top: 2%;
@@ -12,14 +20,6 @@
 
 .btn-click {
     background-color: #ffd34c;
-}
-
-#buttons {
-    display: flex;
-    justify-content: space-evenly;
-    padding-right: 11rem;
-    margin: 3rem;
-    height: 5%;
 }
 
 #delete-click {

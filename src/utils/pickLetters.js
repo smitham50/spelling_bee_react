@@ -1,6 +1,9 @@
-export default function pickLetters() {
-    const gameLetters = [];
+import { consonants, vowels, hardLetters } from '../letterArrays/letterArrays';
 
+const gameLetters = [];
+let anyHard = false;
+
+export default function pickLetters() {
     for (let i = 0; i < 2; i++) {
         pickVowels();
     }
@@ -13,10 +16,9 @@ export default function pickLetters() {
 }
 
 function pickVowels() {
-    let idx = Math.floor(Math.random() * 5)
+    let idx = Math.floor(Math.random() * 5);
     if (!gameLetters.includes(vowels[idx])) {
         gameLetters.push(vowels[idx]);
-        gameLettersCopy = [...gameLetters]
     } else {
         pickVowels();
     }
@@ -37,13 +39,11 @@ function pickConsonants() {
             else {
                 anyHard = true;
                 gameLetters.push(letter);
-                gameLettersCopy = [...gameLetters]
             }
         }
         //if letter isn't a hard letter and it isn't already on the board, put it on the board
         else {
             gameLetters.push(letter);
-            gameLettersCopy = [...gameLetters]
         }
     }
     //if letter is already on the board, pick again

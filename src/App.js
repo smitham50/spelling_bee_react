@@ -35,7 +35,7 @@ function App(props) {
 
   return (
     <div className="App">
-      <div>
+      <div className="game-info">
         <StartButton />
         <div id="list-div">
           <FoundWords />
