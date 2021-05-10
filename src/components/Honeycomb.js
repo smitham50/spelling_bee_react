@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import shuffleArray from 'shuffle-array';
+import { connect } from 'react-redux';
 
 const Honeycomb = (props) => {
     const [hexVals, setHexVals] = useState([]);
+    const { dictionary } = props;
 
     useEffect(() => {
-        // Letters picked on game start, updated on shuffle -- shuffle is going to need useContext
         setHexVals(shuffleArray(["f", "s", "g", "e", "r", "a", "p"]));
     }, []);
+
+    console.log(dictionary);
 
     return (
         <div className="honeycomb">
@@ -44,4 +47,14 @@ const Honeycomb = (props) => {
     );
 }
 
-export default Honeycomb;
+function msp(state) {
+    const {
+        dictionary
+    } = state.dictionary;
+
+    return {
+        dictionary
+    }
+}
+
+export default connect(msp, null)(Honeycomb);

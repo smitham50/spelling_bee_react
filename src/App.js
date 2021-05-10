@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
 
 // Components
 import Honeycomb from './components/Honeycomb';
@@ -19,15 +20,15 @@ import './stylesheets/TextEntry.css';
 import './stylesheets/Controls.css';
 
 
-function App() {
-  const [dictionary, setDictionary] = useState([]);
-  const [dictLoaded, setDictLoaded] = useState(false);
+function App(props) {
+  const { setDictionary, setDictLoaded } = props;
 
   useEffect(() => {
     axios.get('https://raw.githubusercontent.com/patrickherrmann/BoggleSolver/master/twl.txt')
       .then(res => {
         const fullDictionary = res.data.split('\n').map(word => word.trim());
-        setDictionary(fullDictionary.filter(word => word.length >= 4));
+        const filteredDictionary = fullDictionary.filter(word => word.length >= 4);
+        setDictionary(filteredDictionary);
         setDictLoaded(true);
       });
   }, []);
@@ -44,7 +45,7 @@ function App() {
       </div>
       <div id="game-primary">
         <TextEntry />
-        <Honeycomb dictLoaded={dictLoaded} />
+        <Honeycomb />
         <Controls />
       </div>
       
@@ -52,4 +53,21 @@ function App() {
   );
 }
 
-export default App;
+function msp(state) {
+  return {
+
+  }
+}
+
+function mdp(dispatch) {
+  return {
+    setDictionary: (dictionary) => {
+      dispatch({type: "SET_DICTIONARY", payload: dictionary});
+    },
+    setDictLoaded: (dictLoaded) => {
+      dispatch({type: "SET_DICT_LOADED", payload: dictLoaded});
+    }
+  }
+}
+
+export default connect(msp, mdp)(App);
